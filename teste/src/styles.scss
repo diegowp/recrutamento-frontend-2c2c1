@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'reset';
+@import 'flexbox';
+@import 'variables';
+@import 'mixins';
+
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    background: rgba(0,0,0,0.9) url('./assets/images/bg-wall.png') repeat center;
+    background-size: 40%;
+    height: 100vh;
+    @include flexbox;
+    @include flex-flow( row wrap );
+}
+
+app-root{
+    @include align-self( center );
+    @include flex-basis( 100% );
+}
+
+div.footer{
+    height: 100px;
+    background: url('./assets/images/grass.png') repeat center;
+    display: block;
+    @include flex-basis( 100% );
+    @include align-self( flex-end );
+}

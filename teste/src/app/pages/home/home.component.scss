@@ -1,0 +1,11 @@
+@import 'flexbox';
+@import 'mixins';
+
+section#main{
+    width: 100%;
+    max-width: 1100px;
+    background-color: rgba(255,255,255,0.9);
+    padding: 20px;
+    margin: auto;
+    @include border_radius( 20px );
+}
