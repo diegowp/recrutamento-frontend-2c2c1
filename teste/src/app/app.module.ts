@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { Interceptor } from './services/HttpInterceptor';
+import { SearchTagModule } from './components/search-tag/search-tag.module';
+import { SearchFilterModule } from './components/search-filter/search-filter.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { Interceptor } from './services/HttpInterceptor';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    Interceptor
+    Interceptor,
+    SearchTagModule,
+    SearchFilterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

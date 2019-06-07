@@ -14,4 +14,9 @@ export class ClashService {
   getClanDetail( tag: string ): Observable<ClanDetailModel>{
     return this.http.get<ClanDetailModel>(`${environment.api_url}/${tag}`);
   }
+
+  searchClas( options: Array<string> ): Observable<any>{
+    return this.http.get<any>(`${environment.api_url}/search?name=Brasil`);
+  }
+
 }

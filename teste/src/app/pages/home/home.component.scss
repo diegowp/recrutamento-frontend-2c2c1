@@ -1,5 +1,6 @@
 @import 'flexbox';
 @import 'mixins';
+@import 'variables';
 
 section#main{
     width: 100%;
@@ -7,5 +8,6 @@ section#main{
     background-color: rgba(255,255,255,0.9);
     padding: 20px;
     margin: auto;
-    @include border_radius( 20px );
+    border-top: 10px solid $orange;
+    @include border_radius( 5px );
 }

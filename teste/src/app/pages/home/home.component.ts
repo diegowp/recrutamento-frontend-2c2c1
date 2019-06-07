@@ -21,10 +21,14 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
 
     // teste
-    this.service.getClanDetail( '9PJ82CRC' ).subscribe( response => {
-      this.clanData = response;
-      console.log( response );
-    } )
+    // this.service.getClanDetail( '9PJ82CRC' ).subscribe( response => {
+    //   this.clanData = response;
+    //   console.log( response );
+    // } );
+
+    // this.service.searchClas( [] ).subscribe( response => {
+    //   console.log( response );  
+    // })
 
   }
 
