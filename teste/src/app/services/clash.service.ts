@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { ClanDetailModel } from './models/ClanDetailModel.interface';
+import { ClanDetailModel } from './models/ClanDetailModel.class';
+import { ClaSearchModel } from './models/ClaSearchModel.class';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,8 @@ export class ClashService {
     return this.http.get<ClanDetailModel>(`${environment.api_url}/${tag}`);
   }
 
-  searchClas( options: Array<string> ): Observable<any>{
-    return this.http.get<any>(`${environment.api_url}/search?location=BR`);
+  searchClas( options: string ): Observable<ClaSearchModel[]>{
+    return this.http.get<ClaSearchModel[]>(`${environment.api_url}/search?${options}`);
   }
 
 }

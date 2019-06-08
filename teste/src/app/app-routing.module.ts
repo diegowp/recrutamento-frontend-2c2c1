@@ -7,7 +7,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/home.module').then(mod => mod.HomeModule)
   },
   {
-    path: 'detail/:tag',
+    path: 'detail',
     loadChildren: () => import('./pages/cla-detail/cla-detail.module').then(mod => mod.ClaDetailModule)
   }
 ];

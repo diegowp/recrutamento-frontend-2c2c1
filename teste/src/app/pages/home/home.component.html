@@ -1,4 +1,25 @@
 <div class="content">
     <app-search-tag [@loadPage]="loadPage.getValue()"></app-search-tag>
-    <app-search-filter [@loadPage]="loadPage.getValue()"></app-search-filter>
+    <app-search-filter [@loadPage]="loadPage.getValue()" (response)="advancedSearch($event)"></app-search-filter>
+
+    <app-table *ngIf="showSearch" [tableData]="tableContent" [headers]="[
+    {
+        label: 'Clã',
+        key: 'name'
+    },
+    {
+        label: 'Score',
+        key: 'score'
+    },
+    {
+        label: 'Membros',
+        key: 'memberCount'
+    },
+    {
+        label: 'Localização',
+        key: 'location'
+    }
+    ]"></app-table>
 </div>
+
+<app-load [show]="loading"></app-load>

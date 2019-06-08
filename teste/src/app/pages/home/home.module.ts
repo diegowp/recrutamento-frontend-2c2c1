@@ -6,6 +6,7 @@ import { HomeComponent } from './home.component';
 import { SearchTagModule } from 'src/app/components/search-tag/search-tag.module';
 import { SearchFilterModule } from 'src/app/components/search-filter/search-filter.module';
 import { LoadModule } from 'src/app/shared/load/load.module';
+import { TableModule } from 'src/app/shared/table/table.module';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -13,7 +14,9 @@ import { LoadModule } from 'src/app/shared/load/load.module';
     CommonModule,
     HomeRoutingModule,
     SearchTagModule,
-    SearchFilterModule
+    SearchFilterModule,
+    TableModule,
+    LoadModule
   ],
   exports: [
     HomeComponent

@@ -4,7 +4,7 @@ import { ClaDetailComponent } from './cla-detail.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':tag',
     component: ClaDetailComponent
   }
 ];

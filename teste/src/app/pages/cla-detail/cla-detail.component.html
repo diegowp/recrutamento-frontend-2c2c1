@@ -1,11 +1,15 @@
 <div class="content">
 
+  <div class="cla-detail__back">
+    <a [routerLink]="['']"> <i class="icon">&#9664;</i> Voltar </a>
+  </div>
+
   <div class="cla-detail__image">
     <img [src]="claData.badge.image" [alt]="'Clã - ' + claData.name">
   </div>
 
   <div class="cla-detail__infos">
-    <h1>{{ claData.name }}<small> - {{ claData.tag }}</small> </h1>
+    <h1>{{ claData.name }}<small> - #{{ claData.tag }}</small> </h1>
 
     <div class="description">
       <strong>Descrição:</strong>

@@ -1,0 +1,35 @@
+<div class="table-wrapper">
+  <div class="table">
+    
+    <div class="table__header">
+      <strong *ngFor="let header of headers">{{ header.label }}</strong>
+    </div>
+    
+    <div class="table__content">
+      <div class="row" *ngFor="let content of tableData">
+        <div class="badge">
+          <div class="image">
+            <img [src]="content.badge.image" alt="content.name">
+          </div>
+          <div class="infos">
+            <h3 [routerLink]="['/detail', content.tag]">{{ content.name }}</h3>
+            <small [routerLink]="['/detail', content.tag]">#{{ content.tag }}</small>
+          </div>
+        </div>
+        
+        <div class="score">
+          <span>{{ content.score }}</span>
+        </div>
+        
+        <div class="members">
+          <span>{{ content.memberCount }} / 50</span>
+        </div>
+        
+        <div class="location">
+          <span>{{ content.location.name }}</span>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>

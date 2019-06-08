@@ -1,8 +1,9 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { ClashService } from 'src/app/services/clash.service';
-import { ClanDetailModel } from 'src/app/services/models/ClanDetailModel.interface';
+import { ClanDetailModel } from 'src/app/services/models/ClanDetailModel.class';
 import { BehaviorSubject } from 'rxjs';
 import { PageLoadAnimation } from 'src/app/shared/animation';
+import { ClaSearchModel } from 'src/app/services/models/ClaSearchModel.class';
 
 @Component({
   selector: 'app-home',
@@ -22,6 +23,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }
   };
 
+  loading: boolean = false;
+  showSearch: boolean = false;
+
+  tableContent: ClaSearchModel[] = [];
+
   constructor( private service: ClashService ) { }
 
   ngOnInit() {
@@ -31,6 +37,17 @@ export class HomeComponent implements OnInit, AfterViewInit {
     setTimeout(()=>{
       this.loadPage.next('show');
     }, 200);
+  }
+
+  advancedSearch( searchOptions: any ){
+    this.loading = true;
+
+    this.service.searchClas( searchOptions ).subscribe( response => {
+      this.loading = false;
+      this.showSearch = true;
+      this.tableContent = response;
+      console.log( response );
+    })
   }
 
 }

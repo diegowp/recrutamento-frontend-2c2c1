@@ -3,9 +3,26 @@
 @import 'mixins';
 
 div.content{
-    padding-top: 50px;
     @include flexbox;
     @include flex-flow( row wrap );
+
+    div.cla-detail__back{
+        padding-left: 100px;
+        margin-bottom: 50px;
+        @include flex-basis( 100% );
+
+        a{
+            color: $darkGray;
+            text-decoration: none;
+            display: inline-block;
+            border-bottom: 1px solid $darkGray;
+            padding: 5px 10px;
+
+            i.icon{
+                color: $darkGray;
+            }
+        }
+    }
 
     div.cla-detail__image{
         @include flex-basis( 30% );
@@ -83,6 +100,51 @@ div.content{
 
                     &:nth-child(odd){
                         background-color: rgba(0,0,0,0.2);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and ( max-width: 768px ){
+    div.content{
+        div.cla-detail__back{
+            padding-left: 40px;
+        }
+    }
+}
+
+@media only screen and ( max-width: 480px ){
+    div.content{
+        div.cla-detail__back{
+            padding-left: 0;
+        }
+        div.cla-detail__image,
+        div.cla-detail__infos{
+            @include flex-basis( 100% );
+        }
+        div.cla-detail__image{
+            margin-bottom: 20px;
+
+            img{
+                max-width: 80px;
+            }
+        }
+        div.cla-detail__infos{
+            text-align: center;
+
+            h1{
+                font-size: 1.5em;
+                margin: auto;
+            }
+
+            div.members{
+                ul.list{    
+                    li{
+                        span{
+                            font-size: 0.8em;
+                        }
                     }
                 }
             }

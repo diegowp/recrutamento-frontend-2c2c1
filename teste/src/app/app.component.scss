@@ -15,8 +15,10 @@ section#main{
 
     div.top-img{
         width: 100%;
+        max-width: 300px;
         position: absolute;
-        top: -140px;
+        top: -130px;
+        right: 0;
         padding-right: 40px;
         @include flexbox;
         @include align-items( center );
@@ -27,6 +29,26 @@ section#main{
             width: 100%;
             max-width: 250px;
             height: auto;
+        }
+    }
+}
+
+@media only screen and( max-width: 1024px ){
+    section#main{
+        width: 95%;
+
+        div.top-img{
+            padding-right: 20px;
+        }
+    }
+}
+
+@media only screen and( max-width: 480px ){
+    section#main{
+        div.top-img{
+            width: 45%;
+            padding-right: 10px;
+            top: -90px;
         }
     }
 }

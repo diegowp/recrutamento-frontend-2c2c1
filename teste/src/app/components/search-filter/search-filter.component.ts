@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -9,15 +9,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class SearchFilterComponent implements OnInit {
 
   advancedFilterForm: FormGroup;
-  
-  loading: boolean = false;
+
+  @Output() response = new EventEmitter();
 
   constructor( private fb: FormBuilder ) { }
 
   ngOnInit() {
 
     this.advancedFilterForm = this.fb.group({
-      claName: ['', [Validators.required, Validators.minLength(3)]],
+      name: ['', [Validators.required, Validators.minLength(3)]],
       location: ['BR'],
       minScore: [''],
       minMembers: [''],
@@ -26,9 +26,15 @@ export class SearchFilterComponent implements OnInit {
 
   }
 
-  onSubmit(){
-    this.loading = true;
-    console.log( this.advancedFilterForm.value );
+  onSubmit(){    
+    let options: string = '';
+    let formValue = this.advancedFilterForm.value;
+
+    for( let value in formValue ){
+      formValue[value] != '' ? options += `&${value}=${formValue[value]}` : '';
+    }
+
+    this.response.emit( options );
   }
 
 }

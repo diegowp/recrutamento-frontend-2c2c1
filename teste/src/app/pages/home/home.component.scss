@@ -1,9 +1,8 @@
 @import 'flexbox';
-@import 'mixins';
-@import 'variables';
 
 div.content{
     @include flexbox;
+    @include flex-flow( row wrap );
 
     app-search-tag,
     app-search-filter{
@@ -13,4 +12,27 @@ div.content{
         margin-left: 4%;
     }
 
+    app-table{
+        margin-top: 50px;
+        @include flex(0,0,100%);
+    }
+
+}
+
+@media only screen and ( max-width: 768px ){
+    div.content{
+        app-search-tag,
+        app-search-filter{
+            margin-left: 0;
+            @include flex(0,0,100%);
+        }
+    }
+}
+
+@media only screen and ( max-width: 480px ){
+    div.content{
+        app-search-tag{
+            margin-bottom: 30px;
+        }
+    }
 }

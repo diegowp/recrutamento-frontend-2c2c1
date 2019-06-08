@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ClanDetailModel } from 'src/app/services/models/ClanDetailModel.interface';
+import { ClanDetailModel } from 'src/app/services/models/ClanDetailModel.class';
 import { ActivatedRoute } from '@angular/router';
 import { ClashService } from 'src/app/services/clash.service';
 
@@ -10,18 +10,21 @@ import { ClashService } from 'src/app/services/clash.service';
 })
 export class ClaDetailComponent implements OnInit {
 
-  loading: boolean = false;
+  loading: boolean = false;  
+  claData = new ClanDetailModel();
 
-  claData: ClanDetailModel = {
-    name: 'Clã Name',
-    tag: 'Tag',
-    badge: {image: ''},
-    description: 'Clã Description',
-    score: 0,
-    members: [{}]
-  };
+  constructor( private actRouter: ActivatedRoute, private service: ClashService ) {
 
-  constructor( private actRouter: ActivatedRoute, private service: ClashService ) { }
+    this.claData = {
+      name: 'Clã Name',
+      tag: 'Tag',
+      badge: {image: ''},
+      description: 'Clã Description',
+      score: 0,
+      members: [{}],
+    }
+
+  }
 
   ngOnInit() {
 
