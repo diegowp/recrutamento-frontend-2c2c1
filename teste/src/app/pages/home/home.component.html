@@ -1,7 +1,4 @@
-<section id="main">
-
-  <app-search-tag></app-search-tag>
-
-  <h2> {{ clanData.name }} </h2>
-  <img [src]="clanData.badge.image" alt="clanData.name">
-</section>
+<div class="content">
+    <app-search-tag [@loadPage]="loadPage.getValue()"></app-search-tag>
+    <app-search-filter [@loadPage]="loadPage.getValue()"></app-search-filter>
+</div>

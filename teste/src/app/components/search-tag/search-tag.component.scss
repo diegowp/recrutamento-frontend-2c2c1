@@ -1,0 +1,25 @@
+@import 'flexbox';
+@import 'variables';
+
+div.search-tag__content{    
+    form{
+        width: 100%;
+        @include flexbox;
+        @include flex-flow( row wrap );
+
+        div.input-wrapper{
+            @include flex-basis( 100% );
+
+            input{
+                width: 100%;
+            }
+        }
+
+        div.cta-wrapper{
+            margin-top: 20px;
+            @include flex-basis( 100% );
+            @include flexbox;
+            @include justify-content( flex-end );
+        }
+    }
+}

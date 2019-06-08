@@ -1,0 +1,47 @@
+<div class="content">
+
+  <div class="cla-detail__image">
+    <img [src]="claData.badge.image" [alt]="'Clã - ' + claData.name">
+  </div>
+
+  <div class="cla-detail__infos">
+    <h1>{{ claData.name }}<small> - {{ claData.tag }}</small> </h1>
+
+    <div class="description">
+      <strong>Descrição:</strong>
+      <p>{{ claData.description }}</p>
+    </div>
+
+    <div class="score">
+      <strong>Pontuação:</strong>
+      <p>{{ claData.score }}</p>
+    </div>
+
+    <div class="members">
+      <strong>Total de Membros:</strong> {{ claData.memberCount }}
+
+      <div class="members-list">
+        <ul class="headers">
+          <li> 
+            <strong>Nome</strong>
+            <strong>Posição</strong>
+            <strong>Level</strong>
+            <strong>Tropas</strong> 
+          </li>
+        </ul>
+        <ul class="list">
+          <li *ngFor="let member of claData.members">
+            <span>{{ member.name }}</span>
+            <span>{{ member.rank }}</span>
+            <span>{{ member.expLevel }}</span>
+            <span>{{ member.trophies }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<app-load [show]="loading"></app-load>

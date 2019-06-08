@@ -1,0 +1,19 @@
+@import 'variables';
+@import 'mixins';
+
+div.custom-select{
+    position: relative;
+
+    select{
+        width: 100%;
+    }
+
+    i.icon{
+        position: absolute;
+        top: 12px;
+        right: 20px;
+        color: $darkGray;
+        display: block;
+        @include transform( rotate(90deg) );
+    }
+}

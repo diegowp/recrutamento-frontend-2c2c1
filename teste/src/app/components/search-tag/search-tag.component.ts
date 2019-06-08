@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-tag',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchTagComponent implements OnInit {
 
-  constructor() { }
+  searchTagForm: FormGroup;
+  
+  loading: boolean = false;
+
+  constructor( private fb: FormBuilder, private router: Router ) { }
 
   ngOnInit() {
+
+    this.searchTagForm = this.fb.group({
+      tagName: ['', [Validators.required, Validators.minLength(3)]]
+    })
+
+  }
+
+  onSubmit(){
+    this.loading = true;
+    this.router.navigate(['/detail/', this.searchTagForm.get('tagName').value]);
   }
 
 }

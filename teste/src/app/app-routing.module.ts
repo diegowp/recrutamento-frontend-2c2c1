@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    loadChildren: () => import('./pages/home/home.module').then(mod => mod.HomeModule)
+  },
+  {
+    path: 'detail/:tag',
+    loadChildren: () => import('./pages/cla-detail/cla-detail.module').then(mod => mod.ClaDetailModule)
   }
 ];
 

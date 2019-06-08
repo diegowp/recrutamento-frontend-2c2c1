@@ -1,0 +1,6 @@
+<div class="custom-select">
+  <select name="countryList" id="countryList" [formControl]="itemControl">
+    <option *ngFor="let item of countryList | keyvalue" [value]="item.key">{{ item.value }}</option>
+  </select>
+  <i class="icon">&#10095;</i>
+</div>

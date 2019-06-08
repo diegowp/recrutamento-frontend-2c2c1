@@ -4,19 +4,21 @@
     <h2>Buscar por TAG</h2>
   </div>
   
-  <div class="search-tage__content">
-    <form>
+  <div class="search-tag__content">
+    <form [formGroup]="searchTagForm" (ngSubmit)="onSubmit()">
       
       <div class="input-wrapper">
-        <label for="tagName">TAG</label>
-        <input type="text" name="tagName" id="tagName" placeholder="TAG do Clã">
+        <label for="tagName">Tag do Clã</label>
+        <input type="text" name="tagName" id="tagName" formControlName="tagName" placeholder="TAG do Clã">
       </div>
 
       <div class="cta-wrapper">
-        <button class="btn btn-default">Buscar</button>
+        <button type="submit" class="btn btn-default" [disabled]="searchTagForm.invalid">Buscar</button>
       </div>
       
     </form>
   </div>
   
 </article>
+
+<app-load [show]="loading"></app-load>

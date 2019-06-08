@@ -1,13 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ClashService } from 'src/app/services/clash.service';
 import { ClanDetailModel } from 'src/app/services/models/ClanDetailModel.interface';
+import { BehaviorSubject } from 'rxjs';
+import { PageLoadAnimation } from 'src/app/shared/animation';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  animations: PageLoadAnimation
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
+
+  loadPage = new BehaviorSubject('hide');
+  _loadPage = this.loadPage.asObservable();
   
   clanData: ClanDetailModel = {
     name: '',
@@ -19,17 +25,12 @@ export class HomeComponent implements OnInit {
   constructor( private service: ClashService ) { }
 
   ngOnInit() {
+  }
 
-    // teste
-    // this.service.getClanDetail( '9PJ82CRC' ).subscribe( response => {
-    //   this.clanData = response;
-    //   console.log( response );
-    // } );
-
-    // this.service.searchClas( [] ).subscribe( response => {
-    //   console.log( response );  
-    // })
-
+  ngAfterViewInit(){
+    setTimeout(()=>{
+      this.loadPage.next('show');
+    }, 200);
   }
 
 }

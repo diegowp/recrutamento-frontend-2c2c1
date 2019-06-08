@@ -1,22 +1,44 @@
 <article class="search-filter-container">
   
   <div class="search-filter__title">
-    <h2>Buscar Clã</h2>
+    <h2>Filtro Avançado</h2>
   </div>
-  
-  <div class="search-filtere__content">
-    <form>
+
+  <div class="search-filter__content">
+    <form [formGroup]="advancedFilterForm" (ngSubmit)="onSubmit()">
       
       <div class="input-wrapper">
-        <label for="claName">Nome do Clã</label>
-        <input type="text" name="claName" id="claName" placeholder="filter do Clã">
+        <label for="claName">Nome do Clã:</label>
+        <input type="text" name="claName" id="claName" formControlName="claName" placeholder="Nome do Clã">
+      </div>
+
+      <div class="input-wrapper">
+        <label>Localização:</label>
+        <app-country-list [itemControl]="advancedFilterForm.get('location')"></app-country-list>
+      </div>
+
+      <div class="input-wrapper">
+        <label for="minScore">Score mínimo:</label>
+        <input type="number" name="minScore" id="minScore" formControlName="minScore" placeholder="Score mínimo">
+      </div>
+
+      <div class="input-wrapper">
+        <label for="minMembers">Mínimo de membros:</label>
+        <input type="number" name="minMembers" id="minMembers" formControlName="minMembers" placeholder="Mínimo de menbros">
+      </div>
+
+      <div class="input-wrapper">
+        <label for="maxMembers">Máximo de membros:</label>
+        <input type="number" name="maxMembers" id="maxMembers" formControlName="maxMembers" placeholder="Máximo de membros">
       </div>
 
       <div class="cta-wrapper">
-        <button class="btn btn-default">Buscar</button>
+        <button type="submit" class="btn btn-default" [disabled]="advancedFilterForm.invalid">Buscar</button>
       </div>
       
     </form>
   </div>
   
 </article>
+
+<app-load [show]="loading"></app-load>
