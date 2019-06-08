@@ -11,19 +11,16 @@ import { ClashService } from 'src/app/services/clash.service';
 export class ClaDetailComponent implements OnInit {
 
   loading: boolean = false;  
-  claData = new ClanDetailModel();
+  claData: ClanDetailModel = {
+    name: 'Clã Name',
+    tag: 'Tag',
+    badge: {image: ''},
+    description: 'Clã Description',
+    score: 0,
+    members: [{}],
+  };
 
   constructor( private actRouter: ActivatedRoute, private service: ClashService ) {
-
-    this.claData = {
-      name: 'Clã Name',
-      tag: 'Tag',
-      badge: {image: ''},
-      description: 'Clã Description',
-      score: 0,
-      members: [{}],
-    }
-
   }
 
   ngOnInit() {
