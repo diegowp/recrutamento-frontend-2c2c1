@@ -19,9 +19,9 @@ export class SearchFilterComponent implements OnInit {
     this.advancedFilterForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       location: ['BR'],
-      minScore: [''],
-      minMembers: [''],
-      maxMembers: ['']
+      minScore: ['', Validators.min(0)],
+      minMembers: ['', Validators.min(0)],
+      maxMembers: ['', Validators.max(50)]
     })
 
   }
