@@ -10,8 +10,6 @@ import { Router } from '@angular/router';
 export class SearchTagComponent implements OnInit {
 
   searchTagForm: FormGroup;
-  
-  loading: boolean = false;
 
   constructor( private fb: FormBuilder, private router: Router ) { }
 
@@ -24,7 +22,6 @@ export class SearchTagComponent implements OnInit {
   }
 
   onSubmit(){
-    this.loading = true;
     this.router.navigate(['/detail/', this.searchTagForm.get('tagName').value]);
   }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClanDetailModel } from 'src/app/services/models/ClanDetailModel.class';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ClashService } from 'src/app/services/clash.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class ClaDetailComponent implements OnInit {
     members: [{}],
   };
 
-  constructor( private actRouter: ActivatedRoute, private service: ClashService ) {
+  constructor( private actRouter: ActivatedRoute, private service: ClashService, private router: Router ) {
   }
 
   ngOnInit() {
@@ -33,7 +33,11 @@ export class ClaDetailComponent implements OnInit {
       this.service.getClanDetail( claTag ).subscribe( response => {
         this.claData = response;
         this.loading = false;
-      })
+      }, err => {
+        this.loading = false;
+        sessionStorage.setItem('error', 'Não foi localizado nenhum item.');
+        this.router.navigate(['/error']);
+      });
     }
 
   }

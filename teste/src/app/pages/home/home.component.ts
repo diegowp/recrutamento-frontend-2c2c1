@@ -4,6 +4,7 @@ import { ClanDetailModel } from 'src/app/services/models/ClanDetailModel.class';
 import { BehaviorSubject } from 'rxjs';
 import { PageLoadAnimation } from 'src/app/shared/animation';
 import { ClaSearchModel } from 'src/app/services/models/ClaSearchModel.class';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -25,12 +26,17 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   loading: boolean = false;
   showSearch: boolean = false;
+  hasError: string = '';
 
   tableContent: ClaSearchModel[] = [];
 
-  constructor( private service: ClashService ) { }
+  constructor( private service: ClashService, private router: Router ) { }
 
   ngOnInit() {
+    if( this.router.url == '/error' ){
+      this.hasError = sessionStorage.getItem('error');
+      sessionStorage.removeItem('error');
+    }
   }
 
   ngAfterViewInit(){
@@ -44,10 +50,19 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     this.service.searchClas( searchOptions ).subscribe( response => {
       this.loading = false;
-      this.showSearch = true;
-      this.tableContent = response;
+
+      if( response.length == 0 ){        
+        this.hasError = 'Não foi localizado nenhum item.';
+      }else{
+        this.showSearch = true;
+        this.tableContent = response;
+      }
+
       console.log( response );
-    })
+    }, err => {
+      this.loading = false;
+      this.hasError = 'Não foi localizado nenhum item.';
+    });
   }
 
 }

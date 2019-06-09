@@ -1,4 +1,8 @@
 <div class="content">
+    <small class="msg-error" *ngIf="hasError != ''">
+        {{ hasError }}
+    </small>
+
     <app-search-tag [@loadPage]="loadPage.getValue()"></app-search-tag>
     <app-search-filter [@loadPage]="loadPage.getValue()" (response)="advancedSearch($event)"></app-search-filter>
 

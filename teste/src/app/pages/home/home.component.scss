@@ -1,8 +1,18 @@
 @import 'flexbox';
+@import 'mixins';
 
 div.content{
     @include flexbox;
     @include flex-flow( row wrap );
+
+    small.msg-error{
+        padding: 15px;
+        background-color: lighten( red, 40% );
+        color: lighten( red, 20% );
+        margin-bottom: 30px;
+        @include border_radius( 5px );
+        @include flex-basis( 100% );
+    }
 
     app-search-tag,
     app-search-filter{
